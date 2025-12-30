@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Reminder</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            padding: 4rem 3rem;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.3);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            animation: glow 3s ease-in-out infinite;
+            max-width: 90%;
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 60px rgba(139, 92, 246, 0.3);
+                border-color: rgba(139, 92, 246, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 80px rgba(139, 92, 246, 0.5);
+                border-color: rgba(139, 92, 246, 0.5);
+            }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 20px rgba(139, 92, 246, 0.8),
+                         0 0 40px rgba(139, 92, 246, 0.4);
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #a78bfa, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .amount {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 7rem;
+            font-weight: 900;
+            margin: 3rem 0;
+            color: #fbbf24;
+            text-shadow: 0 0 30px rgba(251, 191, 36, 0.8),
+                         0 0 60px rgba(251, 191, 36, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+            letter-spacing: 5px;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                transform: scale(1);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: scale(1.05);
+                filter: brightness(1.2);
+            }
+        }
+
+        .fish-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            color: #60a5fa;
+            text-shadow: 0 0 20px rgba(96, 165, 250, 0.6);
+            animation: swim 4s ease-in-out infinite;
+            display: inline-block;
+            letter-spacing: 2px;
+        }
+
+        @keyframes swim {
+            0%, 100% { 
+                transform: translateX(-15px);
+                filter: hue-rotate(0deg);
+            }
+            50% { 
+                transform: translateX(15px);
+                filter: hue-rotate(20deg);
+            }
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .star:nth-child(1) { width: 2px; height: 2px; top: 10%; left: 15%; animation-delay: 0s; }
+        .star:nth-child(2) { width: 3px; height: 3px; top: 20%; left: 25%; animation-delay: 0.5s; }
+        .star:nth-child(3) { width: 2px; height: 2px; top: 30%; left: 45%; animation-delay: 1s; }
+        .star:nth-child(4) { width: 3px; height: 3px; top: 40%; left: 65%; animation-delay: 1.5s; }
+        .star:nth-child(5) { width: 2px; height: 2px; top: 60%; left: 85%; animation-delay: 2s; }
+        .star:nth-child(6) { width: 3px; height: 3px; top: 70%; left: 35%; animation-delay: 2.5s; }
+        .star:nth-child(7) { width: 2px; height: 2px; top: 80%; left: 55%; animation-delay: 0.8s; }
+        .star:nth-child(8) { width: 2px; height: 2px; top: 15%; left: 75%; animation-delay: 1.2s; }
+        .star:nth-child(9) { width: 3px; height: 3px; top: 50%; left: 20%; animation-delay: 1.8s; }
+        .star:nth-child(10) { width: 2px; height: 2px; top: 90%; left: 90%; animation-delay: 2.3s; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .amount { font-size: 4rem; }
+            .fish-text { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars">
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+        <div class="star"></div>
+    </div>
+
+    <div class="container">
+        <h1>You still have to pay me</h1>
+        <div class="amount">538M</div>
+        <div class="fish-text">Fucking bastard </div>
+    </div>
+</body>
+</html>
